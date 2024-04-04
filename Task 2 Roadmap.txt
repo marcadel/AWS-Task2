@@ -1,0 +1,27 @@
+Task 2 - Readme: (https://www.youtube.com/watch?v=djWulSAwBLk)
+	1. Create VPC with IPv4 CIDR (10.0.0.0/16)
+	2. Create 2 subnets in 2 different zones with IPv4 CIDR (10.0.0.0/24 - 10.0.1.0/24)
+	3. Create internet gateway for our VPC
+	4. Create 1 route tables the 2 subnets and connect it with internet gateway
+	5. Create 2 Security group 1 for each ec2 and make them listen to SSH and HTTP
+	6. Create 2 ec2 for each subnet 
+	7. Install and run Nginx on both ec2 (https://www.digitalocean.com/community/tutorials/how-to-install-nginx-on-ubuntu-22-04)
+	8. Create 1 target group (https://www.youtube.com/watch?v=fZuxp_pOzgI)
+	9. Create 1 load balancer (https://www.youtube.com/watch?v=fZuxp_pOzgI)
+	10. Go to S3 and create bucket 
+	11. We are going to change the bucket permissions and add policy from (https://docs.aws.amazon.com/elasticloadbalancing/latest/application/enable-access-logging.html) according to our region also change the resource name
+			{
+				"Version": "2012-10-17",
+				"Statement": [
+					{
+						"Effect": "Allow",
+						"Principal": {
+							"AWS": "arn:aws:iam::156460612806:root" --> Ireland zone 
+						},
+						"Action": "s3:PutObject",
+						"Resource": "arn:aws:s3:::task2-bucket-nti/AWSLogs/767397956200/*" --> bucket name and id of the user
+					}
+				]
+			}
+	12. Then we will change the access setting in the ELB to allow the access logs 
+	
